@@ -1,0 +1,10 @@
+[project]
+name = "syntha-mcp-connector"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "syntha-ehr[mcp] @ git+https://github.com/Mmynemious/syntha.git@claude/forked-project-overview-zezjck",
+]
+
+[tool.vercel]
+entrypoint = "api.mcp:app"

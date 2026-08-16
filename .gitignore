@@ -43,3 +43,4 @@ dist/
 mcp/*.dxt
 output/
 venv/
+.vercel
