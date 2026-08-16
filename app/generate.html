@@ -4,11 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>syntha — synthetic patient generator</title>
+    <meta name="color-scheme" content="dark" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
+    <nav class="topnav">
+      <a class="topnav-brand" href="/">
+        <svg class="topnav-logo" viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="24" fill="url(#topnavGrad)" />
+          <circle cx="26" cy="26" r="9" fill="#0c0c0c" />
+          <defs>
+            <linearGradient id="topnavGrad" x1="0" y1="0" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#ffd400" />
+              <stop offset="100%" stop-color="#78d0cd" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>syntha</span>
+      </a>
+      <a class="topnav-back" href="/">← Home</a>
+    </nav>
+
     <header>
-      <h1>🩺 syntha</h1>
+      <h1>Synthetic patient generator</h1>
       <p class="tagline">
         <span data-i18n-key="tagline_prefix">Synthea-inspired synthetic patient record generator —</span>
         <span class="cohort-label" data-i18n-key="cohort_label">Turkish pristine-healthy cohort</span>.
