@@ -409,6 +409,79 @@
   .inputbar .mic-btn2 svg { width: 60%; height: 60%; fill: #111; }
   .inputbar .send2 { width: 34px; height: 34px; border-radius: 999px; background: #0c0c0c; border: none; display: flex; align-items: center; justify-content: center; }
   .inputbar .send2 svg { width: 48%; height: 48%; stroke: #fff; }
+
+  /* ---- comparison cards ---- */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(14px,1.6vw,24px);
+    margin-top: clamp(28px,4vh,44px);
+  }
+  @media (max-width: 760px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card {
+    background: var(--panel-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: clamp(12px,1.4vw,18px);
+    padding: clamp(18px,2.2vw,28px);
+  }
+  .compare-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .compare-badge--stat { background: rgba(255,212,0,0.12); color: #ffd76a; }
+  .compare-badge--sim  { background: rgba(120,208,205,0.12); color: #7fd8d4; }
+  .compare-card h3 {
+    margin: 0 0 10px;
+    font-size: clamp(1.1rem,1.6vw,1.35rem);
+    font-weight: 500;
+    color: #fafafa;
+  }
+  .compare-desc {
+    margin: 0 0 16px;
+    color: var(--subhead);
+    font-size: clamp(0.85rem,1.05vw,0.95rem);
+    line-height: 1.55;
+  }
+  .compare-list {
+    margin: 0; padding: 0;
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .compare-list li {
+    font-size: clamp(0.82rem,1vw,0.9rem);
+    color: #cfcfcf;
+    padding-left: 18px;
+    position: relative;
+  }
+  .compare-list li::before {
+    content: '';
+    position: absolute; left: 0; top: 0.55em;
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--strip);
+  }
+  .compare-list li span { color: #fff; font-weight: 600; }
+
+  /* ---- footer ---- */
+  .site-footer {
+    margin-top: clamp(40px,6vh,64px);
+    padding-top: clamp(20px,3vh,28px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 24px;
+  }
+  .footer-left { display: flex; align-items: center; gap: 8px; font-weight: 500; color: #e8e8e8; }
+  .footer-note { color: var(--strip); font-size: 0.82rem; margin: 0; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--subhead); font-size: 0.85rem; transition: color .15s ease; }
+  .footer-links a:hover { color: #fff; }
+  @media (max-width: 640px) { .site-footer { flex-direction: column; align-items: flex-start; } }
 </style>
 </head>
 <body>
@@ -551,6 +624,41 @@
         </div>
       </div>
     </div>
+
+    <div class="compare-grid" data-enter2>
+      <div class="compare-card">
+        <div class="compare-badge compare-badge--stat">Statistical model</div>
+        <h3>syntha — Turkish cohort</h3>
+        <p class="compare-desc">A Gaussian copula fitted offline on real, anonymized Turkish EHR episodes. Statistically faithful to the source cohort, with physiologic constraints enforced on every row.</p>
+        <ul class="compare-list">
+          <li><span>135,569</span> training episodes — tolerant cohort</li>
+          <li><span>55,141</span> training episodes — strict cohort</li>
+          <li>Longitudinal mode — multiple encounters per patient</li>
+          <li>Runs client-side, instant CSV export</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <div class="compare-badge compare-badge--sim">Rule-based simulation</div>
+        <h3>Synthea — official, US</h3>
+        <p class="compare-desc">The real MITRE Synthea Java toolchain, built from source and run live in an isolated sandbox on every request. No statistical model, no real patient data.</p>
+        <ul class="compare-list">
+          <li><span>50</span> US states supported</li>
+          <li>State-machine disease progression simulation</li>
+          <li>FHIR R4 export</li>
+          <li>Server-side, sandboxed CSV export</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="site-footer" data-enter2>
+      <div class="footer-left">syntha</div>
+      <p class="footer-note">Apache 2.0 · trained on open clinical standards (LOINC / SNOMED CT / ICD-10 / RxNorm)</p>
+      <div class="footer-links">
+        <a href="https://github.com/Mmynemious/syntha" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Mmynemious/syntha/blob/main/docs/MCP.md" target="_blank" rel="noopener">Docs</a>
+        <a href="/generate.html">Generators</a>
+      </div>
+    </footer>
   </div>
 </section>
 
@@ -731,7 +839,12 @@
     });
     anims.push(lift(document.querySelector('.inputbar'), 1240, 10, 500, LIFT));
 
-    var total = 1240 + 500 + 50;
+    document.querySelectorAll('.compare-card').forEach(function (el, i) {
+      anims.push(lift(el, 1400 + i * 90, 14, 550, LIFT));
+    });
+    anims.push(lift(document.querySelector('.site-footer'), 1620, 10, 500, LIFT));
+
+    var total = 1620 + 500 + 50;
     setTimeout(function () {
       document.documentElement.classList.remove('entrance-s2');
       anims.forEach(function (a) { if (a) a.cancel(); });
