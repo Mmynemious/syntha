@@ -3,7 +3,15 @@
 // every call after that reuses the same named sandbox and just re-invokes
 // the already-built jar, since its filesystem persists between requests.
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { Sandbox } from "@vercel/sandbox";
+import { APIError, Sandbox } from "@vercel/sandbox";
+
+function describeError(e: unknown): { message: string; detail?: string } {
+  if (e instanceof APIError) {
+    const detail = e.json ? JSON.stringify(e.json) : e.text;
+    return { message: e.message, detail };
+  }
+  return { message: e instanceof Error ? e.message : String(e) };
+}
 
 export const config = {
   maxDuration: 300,
@@ -135,6 +143,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader("Content-Disposition", `attachment; filename="${zipName}"`);
     res.status(200).send(buffer);
   } catch (e) {
-    res.status(500).json({ error: (e as Error).message });
+    const { message, detail } = describeError(e);
+    console.error("synthea-generate failed:", message, detail);
+    res.status(500).json({ error: message, detail });
   }
 }
