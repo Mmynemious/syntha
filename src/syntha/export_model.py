@@ -81,13 +81,20 @@ def load_generator_from_json(
     * a string containing JSON text.
     """
     if isinstance(payload, (str, Path)):
-        p = Path(payload)
-        if p.exists():
-            payload = json.loads(p.read_text(encoding="utf-8"))
-        elif isinstance(payload, str) and payload.lstrip().startswith("{"):
+        if isinstance(payload, str) and payload.lstrip().startswith("{"):
             payload = json.loads(payload)
         else:
-            raise FileNotFoundError(f"model JSON not found: {payload!r}")
+            # Long strings that aren't JSON-looking can still overflow a
+            # single path component (NAME_TOO_LONG on Linux); Path.exists()
+            # doesn't catch that OSError, only FileNotFoundError, so guard it.
+            try:
+                exists = Path(payload).exists()
+            except OSError:
+                exists = False
+            if exists:
+                payload = json.loads(Path(payload).read_text(encoding="utf-8"))
+            else:
+                raise FileNotFoundError(f"model JSON not found: {payload!r}")
     fmt = payload.get("format", "")
     if not fmt.startswith("syntha-copula-v"):
         raise ValueError(f"unknown model JSON format: {fmt!r}")

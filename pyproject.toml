@@ -35,7 +35,9 @@ mcp = [
     # Model Context Protocol SDK (Anthropic) — runs the syntha-mcp server
     # that lets Claude Desktop, Claude.com custom connectors, mcp-cli,
     # Cursor, Continue etc. drive synthetic-cohort generation.
-    "mcp>=1.2",
+    # mcp 2.0 renamed/moved FastMCP (mcp.server.fastmcp -> mcp.server.mcpserver,
+    # class renamed to MCPServer) — pin below that until this server is ported.
+    "mcp>=1.2,<2",
 ]
 
 [project.scripts]
