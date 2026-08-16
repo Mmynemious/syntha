@@ -14,6 +14,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         generate: resolve(__dirname, "generate.html"),
+        benchmark: resolve(__dirname, "benchmark.html"),
       },
     },
   },

@@ -59,12 +59,7 @@ export function Validation() {
           ))}
         </div>
 
-        <a
-          className="section-link"
-          href="https://github.com/Mmynemious/syntha/tree/main/docs/site"
-          target="_blank"
-          rel="noopener"
-        >
+        <a className="section-link" href="/benchmark.html">
           See the full benchmark dashboard →
         </a>
       </div>
