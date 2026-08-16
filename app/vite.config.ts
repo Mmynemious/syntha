@@ -1,17 +1,21 @@
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import { resolve } from "node:path";
 
-// Tauri expects the dev server on a fixed port and a fixed public path.
 export default defineConfig({
   clearScreen: false,
-  server: {
-    port: 1420,
-    strictPort: true,
-    watch: { ignored: ["**/src-tauri/**"] },
-  },
-  envPrefix: ["VITE_", "TAURI_"],
+  plugins: [react(), tailwindcss()],
+  envPrefix: ["VITE_"],
   build: {
     target: "es2020",
-    minify: !process.env.TAURI_DEBUG ? "esbuild" : false,
-    sourcemap: !!process.env.TAURI_DEBUG,
+    minify: "esbuild",
+    sourcemap: false,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "index.html"),
+        generate: resolve(__dirname, "generate.html"),
+      },
+    },
   },
 });
