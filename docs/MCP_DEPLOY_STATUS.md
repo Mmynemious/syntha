@@ -41,26 +41,39 @@ All three MCP fixes are verified locally: fresh-venv installs, the full
 handshake test, and a direct `generate_cohort_csv` tool call returning
 real synthetic CSV data.
 
+- **`c2da24e`** — **deployed.** The Vercel project (`mmynemious-projects/syntha`,
+  already Git-connected to this repo) had its Root Directory fixed from
+  `.` to `app`, and its Framework Preset cleared from an auto-detected
+  `Python` (which was suppressing the static Vite build) to none. Three
+  bugs found and fixed along the way:
+  - `app/pyproject.toml` added as the single source of Python deps for
+    `api/mcp.py`, and `app/requirements.txt` removed — having both
+    caused Vercel to install the same ~40 packages (pandas/numpy/scipy/
+    scikit-learn) twice, pushing the function bundle past the 500MB
+    limit (532MB observed; single-install is 269MB).
+  - `app/vercel.json` added (`buildCommand`/`outputDirectory: dist`) so
+    the Vite frontend still builds once the Python framework preset is
+    gone — otherwise the whole project got treated as one Python
+    function and the static landing page 404'd.
+  - `app/api/mcp.py` now explicitly disables FastMCP's DNS-rebinding
+    `TransportSecuritySettings` (it auto-scopes `allowed_hosts` to
+    `127.0.0.1`/`localhost` when constructed with the default host,
+    which rejected every real request with a 421 "Invalid Host header").
+  - Live verification: `https://syntha-six.vercel.app/` → 200,
+    `https://syntha-six.vercel.app/api/mcp` → JSON-RPC `initialize`
+    round-trips and lists all bundled tools.
+
 ## Not done yet
 
-1. **Not deployed.** Getting this onto `syntha-six.vercel.app` needs a
-   full production deploy of the `app/` directory. Repeated
-   inline-file-payload deploy attempts hit a size wall (the deploy tool
-   needs the whole ~130KB `app/` tree in one atomic call). The clean fix
-   is linking the Vercel project to this GitHub repo — **Project
-   Settings → Git → Connect Repository, root directory `app`** — so
-   Vercel builds straight from pushed commits instead. That needs
-   project-creation/linking rights on the Vercel team that weren't
-   available to the deploying session. **Next step: connect the repo via
-   the Vercel dashboard, then redeploy (or re-grant the linking
-   permission and retry `create_git_project`).**
-2. **MCP listing files not rebranded.** `mcp/manifest.json`,
+1. **MCP listing files not rebranded.** `mcp/manifest.json`,
    `mcp/LISTING.md`, `mcp/SUBMISSION.md` still hard-code the original
    upstream author's identity (name, email, ORCID, institution) and all
    `github.com/ArioMoniri/syntha` URLs. Decision already made: list the
    fork owner as maintainer with a "based on syntha by Ariorad Moniri"
    credit line, and repoint URLs to `github.com/Mmynemious/syntha`. Not
    started.
-3. **No end-to-end connector test yet.** Once deployed, add
+2. **Claude.com connector not added yet.** The endpoint is live and
+   verified via raw JSON-RPC — next step is adding
    `https://syntha-six.vercel.app/api/mcp` as a custom connector in
-   Claude.com and confirm a real tool call round-trips.
+   Claude.com and confirming a real tool call round-trips through the
+   actual client.
