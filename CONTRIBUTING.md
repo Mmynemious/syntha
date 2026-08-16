@@ -30,7 +30,7 @@ Open an issue with:
 ### Setup
 
 ```bash
-git clone https://github.com/ArioMoniri/syntha.git
+git clone https://github.com/Mmynemious/syntha.git
 cd syntha
 pip install -e ".[dev]"
 ```

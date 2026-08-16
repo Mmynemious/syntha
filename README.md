@@ -75,7 +75,7 @@ pip install syntha-ehr
 pip install "syntha-ehr[mcp]"
 
 # Or from source
-git clone https://github.com/ArioMoniri/syntha
+git clone https://github.com/Mmynemious/syntha
 cd syntha
 pip install -e ".[dev]"
 
@@ -300,13 +300,13 @@ https://github.com/ArioMoniri/syntha
 <table>
   <tr>
     <td align="center" width="33%">
-      <a href="https://github.com/ArioMoniri/syntha/discussions">
+      <a href="https://github.com/Mmynemious/syntha/discussions">
         <strong>💬 Discussions</strong>
       </a><br />
       <sub>Open questions, "is this the right tool for X?", show-and-tell</sub>
     </td>
     <td align="center" width="33%">
-      <a href="https://github.com/ArioMoniri/syntha/issues">
+      <a href="https://github.com/Mmynemious/syntha/issues">
         <strong>🐛 Issues</strong>
       </a><br />
       <sub>Bug reports + feature requests + clinical curation</sub>

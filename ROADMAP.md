@@ -129,7 +129,7 @@ If you're a clinician (Dr. Moniri or a collaborator) and want to provide curatio
 
 1. Pick a 🟣 task above (or any open issue with the `help-wanted-clinician` label).
 2. **Easiest path:** open the desktop app, hit the **Collaborate** panel, click "Claim this" on the task. The app pre-fills a GitHub Issue comment with your handle so the maintainers know you've started.
-3. **Or:** open an issue using the [🧑‍⚕️ Clinical curation template](https://github.com/ArioMoniri/syntha/issues/new?template=clinical_curation.md&labels=help-wanted-clinician&title=%5Bclinical-curation%5D%20).
+3. **Or:** open an issue using the [🧑‍⚕️ Clinical curation template](https://github.com/Mmynemious/syntha/issues/new?template=clinical_curation.md&labels=help-wanted-clinician&title=%5Bclinical-curation%5D%20).
 4. **Or:** paste the clinical Turkish guidance into the issue and the maintainers will implement.
 5. **Or:** edit the relevant Python module directly and open a PR (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 

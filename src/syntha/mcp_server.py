@@ -293,7 +293,7 @@ def syntha_version() -> dict:
     """Return the syntha library version, repo URL, and bundled-model fingerprints."""
     info: dict = {
         "syntha_version": _syntha_version,
-        "repo": "https://github.com/ArioMoniri/syntha",
+        "repo": "https://github.com/Mmynemious/syntha",
         "license": "Apache-2.0",
         "bundled_cohorts": list(_COHORTS),
     }

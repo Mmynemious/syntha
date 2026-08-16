@@ -73,14 +73,14 @@ These tasks need someone with Turkish clinical practice knowledge. Most are 30�
 ### From the web
 
 1. Browse open issues with the relevant label:
-   - 🧑‍⚕️ [help-wanted-clinician](https://github.com/ArioMoniri/syntha/labels/help-wanted-clinician)
-   - 💻 [help-wanted-dev](https://github.com/ArioMoniri/syntha/labels/help-wanted-dev)
-   - 📊 [help-wanted-data](https://github.com/ArioMoniri/syntha/labels/help-wanted-data)
+   - 🧑‍⚕️ [help-wanted-clinician](https://github.com/Mmynemious/syntha/labels/help-wanted-clinician)
+   - 💻 [help-wanted-dev](https://github.com/Mmynemious/syntha/labels/help-wanted-dev)
+   - 📊 [help-wanted-data](https://github.com/Mmynemious/syntha/labels/help-wanted-data)
 2. Comment on the one you'd like to take. The CODEOWNERS file pings the maintainer automatically.
 
 ### Opening a new clinical-curation issue
 
-[🧑‍⚕️ One-click issue template](https://github.com/ArioMoniri/syntha/issues/new?template=clinical_curation.md&labels=help-wanted-clinician&title=%5Bclinical-curation%5D%20)
+[🧑‍⚕️ One-click issue template](https://github.com/Mmynemious/syntha/issues/new?template=clinical_curation.md&labels=help-wanted-clinician&title=%5Bclinical-curation%5D%20)
 
 ---
 
@@ -100,6 +100,6 @@ This project follows the [Contributor Covenant 2.1](https://www.contributor-cove
 
 ## Contact
 
-- 🐛 [Issues](https://github.com/ArioMoniri/syntha/issues) — bug reports + feature requests + clinical curation
-- 🗨️ [Discussions](https://github.com/ArioMoniri/syntha/discussions) — open-ended proposals
+- 🐛 [Issues](https://github.com/Mmynemious/syntha/issues) — bug reports + feature requests + clinical curation
+- 🗨️ [Discussions](https://github.com/Mmynemious/syntha/discussions) — open-ended proposals
 - 📧 The maintainer responds on the issue tracker; no email gate.

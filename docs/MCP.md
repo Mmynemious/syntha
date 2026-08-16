@@ -135,8 +135,8 @@ Submission to the Claude Connector directory at <https://claude.com/connectors> 
 | Item | Where | Notes |
 |---|---|---|
 | **Manifest (`manifest.json`)** | `/mcp/manifest.json` | Declares name, version, tools, entry point. Bump `0.5.9 → 0.5.10` on submission. The `$schema` currently points at `dxt-manifest.json` — swap to the MCPB schema URL once Anthropic publishes a stable one. |
-| **Support contact** | `https://github.com/ArioMoniri/syntha/issues` | Already in the manifest. A monitored email is optional. |
-| **Public documentation URL** | `https://github.com/ArioMoniri/syntha/blob/main/docs/MCP.md` | Already referenced in the manifest and present in the repo. |
+| **Support contact** | `https://github.com/Mmynemious/syntha/issues` | Already in the manifest. A monitored email is optional. |
+| **Public documentation URL** | `https://github.com/Mmynemious/syntha/blob/main/docs/MCP.md` | Already referenced in the manifest and present in the repo. |
 | **Listing copy (short + long description)** | `manifest.json` `description` / `long_description` | Self-sufficient. Will shorten to a ~140-char tagline for the directory card. |
 
 ### To author before submission
