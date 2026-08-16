@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <script>
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.classList.add('entrance', 'entrance-s2');
+    document.documentElement.classList.add('entrance', 'entrance-s2', 'entrance-s3');
     setTimeout(function () { document.documentElement.classList.remove('entrance'); }, 3500);
   }
 </script>
@@ -38,6 +38,9 @@
   html.entrance-s2 [data-enter2] { opacity: 0; }
   html.entrance-s2 .hl2-line { opacity: 0; }
   html.entrance-s2 .hl2-mask { overflow: hidden; }
+  html.entrance-s3 [data-enter3] { opacity: 0; }
+  html.entrance-s3 .hl3-line { opacity: 0; }
+  html.entrance-s3 .hl3-mask { overflow: hidden; }
 
   /* ============ SECTION 1 — HERO ============ */
   .section-one {
@@ -482,6 +485,112 @@
   .footer-links a { color: var(--subhead); font-size: 0.85rem; transition: color .15s ease; }
   .footer-links a:hover { color: #fff; }
   @media (max-width: 640px) { .site-footer { flex-direction: column; align-items: flex-start; } }
+
+  /* ============ SECTION 3 — PROOF / MCP ============ */
+  .section-three {
+    --heading3: #ffffff;
+    --subhead3: #8b8b8d;
+    --card3-bg: #0d0d0d;
+    --track-bg: rgba(255,255,255,0.08);
+    background: #0c0c0c;
+    font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",Arial,sans-serif;
+    padding: clamp(48px,7vh,96px) clamp(16px,6vw,91px) clamp(48px,7vh,80px);
+  }
+  .s3-wrap { max-width: 1300px; margin: 0 auto; width: 100%; }
+
+  h2.headline3 {
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.6rem,4.1vw,3.3rem);
+    line-height: 1.11;
+    color: var(--heading3);
+  }
+  .hl3-mask { display: block; padding-bottom: 0.14em; margin-bottom: -0.14em; overflow: hidden; }
+  .hl3-line { display: inline-block; will-change: transform, opacity; }
+
+  .subcopy3 {
+    color: var(--subhead3);
+    font-size: clamp(0.82rem,1.25vw,1.125rem);
+    margin-top: 0.9em;
+    max-width: 42rem;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(14px,1.6vw,24px);
+    margin-top: clamp(28px,4vh,44px);
+    align-items: stretch;
+  }
+  @media (max-width: 900px) { .proof-grid { grid-template-columns: 1fr; } }
+
+  .proof-card {
+    background: var(--card3-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: clamp(12px,1.4vw,18px);
+    padding: clamp(20px,2.4vw,32px);
+    display: flex; flex-direction: column;
+  }
+  .proof-kicker {
+    display: inline-flex; align-self: flex-start;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase;
+    color: #ffd76a;
+    background: rgba(255,212,0,0.12);
+    padding: 4px 10px; border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: clamp(20px,2.6vh,28px);
+  }
+  @media (max-width: 520px) { .stat-row { grid-template-columns: 1fr; } }
+  .stat-num { font-size: clamp(1.8rem,2.6vw,2.4rem); font-weight: 500; color: #fff; letter-spacing: -0.02em; }
+  .stat-label { color: var(--subhead3); font-size: 0.78rem; line-height: 1.4; margin-top: 4px; }
+  .stat-note { color: #5c5c5c; }
+
+  .corr-title { color: #cfcfcf; font-size: 0.85rem; font-weight: 500; margin: 0 0 14px; }
+  .corr-bars { display: flex; flex-direction: column; gap: 16px; }
+  .corr-group { display: flex; flex-direction: column; gap: 6px; }
+  .corr-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .corr-label { color: #cfcfcf; font-size: 0.82rem; }
+  .corr-val { color: var(--subhead3); font-size: 0.78rem; }
+  .corr-bar-row { display: flex; align-items: center; gap: 8px; }
+  .corr-tag { width: 32px; flex: none; color: #5c5c5c; font-size: 0.68rem; font-weight: 600; }
+  .corr-track { flex: 1; height: 7px; border-radius: 999px; background: var(--track-bg); overflow: hidden; }
+  .corr-fill { height: 100%; border-radius: 999px; }
+  .corr-fill--old { background: #4a4a4a; }
+  .corr-fill--new { background: linear-gradient(90deg, #ffd400, #78d0cd); }
+
+  .proof-link {
+    display: inline-block;
+    margin-top: clamp(18px,2.4vh,24px);
+    color: var(--subhead3);
+    font-size: 0.85rem;
+    align-self: flex-start;
+    transition: color .15s ease;
+  }
+  .proof-link:hover { color: #fff; }
+
+  .mcp-title { margin: 0 0 10px; font-size: clamp(1.1rem,1.6vw,1.35rem); font-weight: 500; color: #fafafa; }
+  .mcp-desc { margin: 0 0 18px; color: var(--subhead3); font-size: clamp(0.85rem,1.05vw,0.95rem); line-height: 1.55; }
+
+  .code-card {
+    background: #050505;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+  }
+  .code-line { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.82rem; color: #d8f5d0; }
+  .code-prompt { color: #78d0cd; margin-right: 8px; }
+
+  .mcp-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .mcp-list li { font-size: 0.82rem; color: #cfcfcf; line-height: 1.5; }
+  .mcp-list li span { color: #fff; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -649,8 +758,80 @@
         </ul>
       </div>
     </div>
+  </div>
+</section>
 
-    <footer class="site-footer" data-enter2>
+<!-- ============ SECTION 3 — PROOF / MCP ============ -->
+<section class="section-three" id="proof">
+  <div class="s3-wrap">
+    <h2 class="headline3">
+      <span class="hl3-mask"><span class="hl3-line">Not just another generator.</span></span>
+    </h2>
+    <p class="subcopy3" data-enter3>
+      Every release is benchmarked against the source cohort — and the whole pipeline is usable directly from Claude, no extra glue code.
+    </p>
+
+    <div class="proof-grid">
+      <div class="proof-card" data-enter3>
+        <div class="proof-kicker">Validated fidelity</div>
+
+        <div class="stat-row">
+          <div class="stat" data-enter3>
+            <div class="stat-num">0.07</div>
+            <div class="stat-label">mean KS distance<br><span class="stat-note">lower = closer to source; 0.05 is the conventional pass line</span></div>
+          </div>
+          <div class="stat" data-enter3>
+            <div class="stat-num">61</div>
+            <div class="stat-label">automated tests<br><span class="stat-note">up from 37 at first release</span></div>
+          </div>
+          <div class="stat" data-enter3>
+            <div class="stat-num">3</div>
+            <div class="stat-label">independent audits<br><span class="stat-note">fidelity · utility · privacy</span></div>
+          </div>
+        </div>
+
+        <p class="corr-title">Correlation-magnitude recovery, v0.4 → v0.5</p>
+        <div class="corr-bars">
+          <div class="corr-group" data-enter3>
+            <div class="corr-header"><span class="corr-label">continuous ↔ continuous</span><span class="corr-val">99% → 99%</span></div>
+            <div class="corr-bar-row"><span class="corr-tag">v0.4</span><div class="corr-track"><div class="corr-fill corr-fill--old" style="width:99%"></div></div></div>
+            <div class="corr-bar-row"><span class="corr-tag">v0.5</span><div class="corr-track"><div class="corr-fill corr-fill--new" style="width:99%"></div></div></div>
+          </div>
+          <div class="corr-group" data-enter3>
+            <div class="corr-header"><span class="corr-label">continuous ↔ binary</span><span class="corr-val">84% → 94%</span></div>
+            <div class="corr-bar-row"><span class="corr-tag">v0.4</span><div class="corr-track"><div class="corr-fill corr-fill--old" style="width:84%"></div></div></div>
+            <div class="corr-bar-row"><span class="corr-tag">v0.5</span><div class="corr-track"><div class="corr-fill corr-fill--new" style="width:94%"></div></div></div>
+          </div>
+          <div class="corr-group" data-enter3>
+            <div class="corr-header"><span class="corr-label">binary ↔ binary</span><span class="corr-val">39% → 90%</span></div>
+            <div class="corr-bar-row"><span class="corr-tag">v0.4</span><div class="corr-track"><div class="corr-fill corr-fill--old" style="width:39%"></div></div></div>
+            <div class="corr-bar-row"><span class="corr-tag">v0.5</span><div class="corr-track"><div class="corr-fill corr-fill--new" style="width:90%"></div></div></div>
+          </div>
+        </div>
+
+        <a class="proof-link" data-enter3 href="https://github.com/Mmynemious/syntha/tree/main/docs/site" target="_blank" rel="noopener">See the full benchmark dashboard →</a>
+      </div>
+
+      <div class="proof-card" data-enter3>
+        <div class="proof-kicker">Works inside Claude</div>
+        <h3 class="mcp-title">A 34-tool MCP connector</h3>
+        <p class="mcp-desc">Generate, validate, and audit synthetic cohorts from a chat — Turkish-locale patients, FHIR R4 bundles, longitudinal histories, privacy audits, all without leaving Claude.</p>
+
+        <div class="code-card" data-enter3>
+          <div class="code-line"><span class="code-prompt">$</span> pip install "syntha-ehr[mcp]"</div>
+        </div>
+
+        <ul class="mcp-list">
+          <li data-enter3><span>Generate</span> — cross-sectional + longitudinal cohorts, conditional sampling, FHIR bundles</li>
+          <li data-enter3><span>Validate &amp; audit</span> — KS / prevalence / correlation fidelity, membership + attribute inference privacy audits</li>
+          <li data-enter3><span>Terminology</span> — ICD-10 / SNOMED CT / LOINC / RxNorm catalogs, Turkish locale data</li>
+        </ul>
+
+        <a class="proof-link" data-enter3 href="https://github.com/Mmynemious/syntha/blob/main/docs/MCP.md" target="_blank" rel="noopener">Read the MCP docs →</a>
+      </div>
+    </div>
+
+    <footer class="site-footer" data-enter3>
       <div class="footer-left">syntha</div>
       <p class="footer-note">Apache 2.0 · trained on open clinical standards (LOINC / SNOMED CT / ICD-10 / RxNorm)</p>
       <div class="footer-links">
@@ -842,11 +1023,65 @@
     document.querySelectorAll('.compare-card').forEach(function (el, i) {
       anims.push(lift(el, 1400 + i * 90, 14, 550, LIFT));
     });
-    anims.push(lift(document.querySelector('.site-footer'), 1620, 10, 500, LIFT));
 
-    var total = 1620 + 500 + 50;
+    var total = 1400 + 90 + 550 + 50;
     setTimeout(function () {
       document.documentElement.classList.remove('entrance-s2');
+      anims.forEach(function (a) { if (a) a.cancel(); });
+    }, total);
+  }
+
+  // ---- section 3 entrance, on scroll into view ----
+  var s3 = document.querySelector('.section-three');
+  if (s3 && 'IntersectionObserver' in window) {
+    var played3 = false;
+    var io3 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !played3) {
+          played3 = true;
+          runSection3Timeline();
+          io3.disconnect();
+        }
+      });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0 });
+    io3.observe(s3);
+  }
+
+  function runSection3Timeline() {
+    var anims = [];
+    document.querySelectorAll('.hl3-line').forEach(function (line, i) {
+      anims.push(maskReveal(line, i * 90));
+    });
+    anims.push(lift(document.querySelector('.subcopy3'), 260, 14, 600, LIFT));
+
+    document.querySelectorAll('.proof-card').forEach(function (card, i) {
+      anims.push(card.animate(
+        [{ opacity: 0, transform: 'translateY(' + (22 * D) + 'px) scale(0.99)' },
+         { opacity: 1, transform: 'translateY(0) scale(1)' }],
+        { duration: 900, delay: 420 + i * 140, easing: REVEAL, fill: 'forwards' }
+      ));
+    });
+
+    document.querySelectorAll('.stat').forEach(function (el, i) {
+      anims.push(lift(el, 760 + i * 60, 10, 500, LIFT));
+    });
+    document.querySelectorAll('.corr-group').forEach(function (el, i) {
+      anims.push(lift(el, 960 + i * 80, 10, 500, LIFT));
+    });
+    document.querySelectorAll('.code-card').forEach(function (el, i) {
+      anims.push(lift(el, 780 + i * 60, 10, 500, LIFT));
+    });
+    document.querySelectorAll('.mcp-list li').forEach(function (el, i) {
+      anims.push(lift(el, 940 + i * 60, 10, 500, LIFT));
+    });
+    document.querySelectorAll('.proof-link').forEach(function (el, i) {
+      anims.push(lift(el, 1220 + i * 60, 10, 500, LIFT));
+    });
+    anims.push(lift(document.querySelector('.site-footer'), 1400, 10, 500, LIFT));
+
+    var total = 1400 + 500 + 60;
+    setTimeout(function () {
+      document.documentElement.classList.remove('entrance-s3');
       anims.forEach(function (a) { if (a) a.cancel(); });
     }, total);
   }
