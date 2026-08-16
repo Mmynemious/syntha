@@ -5,18 +5,18 @@
   "display_name": "syntha — synthetic patient generator",
   "version": "0.5.10",
   "description": "Generate realistic, fully synthetic patient cohorts (CSV or FHIR R4) trained on de-identified retrospective EHR episodes. Locale-aware (Turkish primary care), 9 Synthea-style clinical modules, polyserial/tetrachoric Gaussian copula, dual-coded LOINC + SNOMED CT + ICD-10 + RxNorm. No PHI ever returned.",
-  "long_description": "syntha lets you generate synthetic patient records (no real-patient row is ever returned) for ML training, healthy-control cohorts in case–control studies, FHIR pipeline / ETL integration testing, biostatistics teaching, and data augmentation — without redistributing any source data. The 0.5.10 connector exposes 34 tools across six areas: (1) cohort inspection — list/inspect the bundled cohorts (tolerant n=135,569; strict n=55,141), model cards, correlation pairs; (2) cross-sectional generation — CSV cohorts and FHIR R4 transaction-Bundle NDJSON with nine Synthea-style modules (hypertension, diabetes, hyperlipidemia, thyroid, depression, anxiety, IHD, asthma, COPD, CKD); (3) longitudinal mode — multi-encounter trajectories (CSV + FHIR), AR(1) lab time-series with Westgard biological variation + secular drift, intra-encounter BP triplets, and standalone PHQ-9 / GAD-7 / Charlson / FamilyMemberHistory resources; (4) validation & privacy — KS / Wasserstein / Frobenius statistical-fidelity reports against either a user CSV or the bundled cohort, plus MIA + AIA privacy audits with pass/fail verdicts; (5) reference-range coverage — Mayo / Tietz / KDIGO clinical intervals (sex-aware for hemoglobin & creatinine), per-cohort / per-row in-range fractions, and standalone physiologic-coherence filtering (pulse pressure, Friedewald, eGFR↔creatinine); (6) Turkish locale + reference data — TÜİK-frequency names, ISO 3166-2:TR cities, dual-coded SNOMED + ICD-10 + Turkish condition displays, LOINC lab catalog, RxNorm drug classes, KDIGO CKD staging, AST-validated rejection sampling, and full PipelineConfig documentation. Built on the open-source syntha-ehr library; Apache 2.0; full source, privacy policy, and submission docs at https://github.com/ArioMoniri/syntha.",
+  "long_description": "syntha lets you generate synthetic patient records (no real-patient row is ever returned) for ML training, healthy-control cohorts in case–control studies, FHIR pipeline / ETL integration testing, biostatistics teaching, and data augmentation — without redistributing any source data. The 0.5.10 connector exposes 34 tools across six areas: (1) cohort inspection — list/inspect the bundled cohorts (tolerant n=135,569; strict n=55,141), model cards, correlation pairs; (2) cross-sectional generation — CSV cohorts and FHIR R4 transaction-Bundle NDJSON with nine Synthea-style modules (hypertension, diabetes, hyperlipidemia, thyroid, depression, anxiety, IHD, asthma, COPD, CKD); (3) longitudinal mode — multi-encounter trajectories (CSV + FHIR), AR(1) lab time-series with Westgard biological variation + secular drift, intra-encounter BP triplets, and standalone PHQ-9 / GAD-7 / Charlson / FamilyMemberHistory resources; (4) validation & privacy — KS / Wasserstein / Frobenius statistical-fidelity reports against either a user CSV or the bundled cohort, plus MIA + AIA privacy audits with pass/fail verdicts; (5) reference-range coverage — Mayo / Tietz / KDIGO clinical intervals (sex-aware for hemoglobin & creatinine), per-cohort / per-row in-range fractions, and standalone physiologic-coherence filtering (pulse pressure, Friedewald, eGFR↔creatinine); (6) Turkish locale + reference data — TÜİK-frequency names, ISO 3166-2:TR cities, dual-coded SNOMED + ICD-10 + Turkish condition displays, LOINC lab catalog, RxNorm drug classes, KDIGO CKD staging, AST-validated rejection sampling, and full PipelineConfig documentation. Based on syntha by Ariorad Moniri; this fork is built on the open-source syntha-ehr library; Apache 2.0; full source, privacy policy, and submission docs at https://github.com/Mmynemious/syntha.",
   "author": {
-    "name": "Ariorad Moniri",
-    "email": "moniriario@gmail.com",
-    "url": "https://github.com/ArioMoniri"
+    "name": "Yara Ismail",
+    "email": "yaraismail2611@gmail.com",
+    "url": "https://github.com/Mmynemious"
   },
-  "homepage": "https://github.com/ArioMoniri/syntha",
-  "documentation": "https://github.com/ArioMoniri/syntha/blob/main/docs/MCP.md",
-  "support": "https://github.com/ArioMoniri/syntha/issues",
+  "homepage": "https://github.com/Mmynemious/syntha",
+  "documentation": "https://github.com/Mmynemious/syntha/blob/main/docs/MCP.md",
+  "support": "https://github.com/Mmynemious/syntha/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ArioMoniri/syntha"
+    "url": "https://github.com/Mmynemious/syntha"
   },
   "license": "Apache-2.0",
   "keywords": [

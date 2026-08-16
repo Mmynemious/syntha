@@ -1,6 +1,6 @@
 # Submitting `syntha` to the Anthropic Connector Directory
 
-This document walks you (Ariorad Moniri, signed in as your **Anthropic Organization** account) through every step from "git tag" to "live in the connector directory at claude.com/connectors".
+This document walks you (Yara Ismail, maintainer of this fork, signed in as your **Anthropic Organization** account) through every step from "git tag" to "live in the connector directory at claude.com/connectors".
 
 > Note on uncertainty: Anthropic's connector-submission UI may have moved or
 > been renamed since this document was written (effective 2026-06-28). If a
@@ -17,7 +17,7 @@ This document walks you (Ariorad Moniri, signed in as your **Anthropic Organizat
 You said you want to submit via your **company / Organization** account. Make sure that account exists and you're an Owner or Admin on it:
 
 1. Go to <https://console.anthropic.com> and sign in.
-2. **Settings → Organization** — confirm the org exists with the right legal name (recommended: "Acibadem University School of Medicine" or whatever entity is authorised to publish on the institution's behalf; double-check with your institution before listing them).
+2. **Settings → Organization** — confirm the org exists under the right legal name (personal account is fine for an individual fork maintainer; use an institutional name only if you're publishing on that institution's behalf, and confirm with them first).
 3. Confirm you have the **Owner** role on that organization (you'll need it to accept marketplace terms).
 4. **Billing tab** — confirm there's at least a payment method on file. The connector directory itself does not charge a listing fee for Apache 2.0 OSS connectors (verify at submission time), but Anthropic gates organization features on a populated billing profile.
 
@@ -37,7 +37,7 @@ npx --version
 python3 --version
 
 # Make sure git remotes are clean and main is in sync.
-cd /Users/ario/Downloads/syntha
+cd /path/to/your/syntha/checkout
 git status
 git pull --rebase origin main
 ```
@@ -49,7 +49,7 @@ git pull --rebase origin main
 The connector directory expects a stable, versioned submission. Use the most recent tag (or cut a new one if there are unreleased changes on `main`).
 
 ```bash
-cd /Users/ario/Downloads/syntha
+cd /path/to/your/syntha/checkout
 
 # What tag is current?
 git describe --tags --abbrev=0          # → expected: v0.5.x
@@ -70,7 +70,7 @@ If something's missing, fix it first — the listing is hard to update post-subm
 Anthropic's official packaging tool is **`@anthropic-ai/dxt`** on npm (the DXT format is documented at <https://github.com/anthropics/dxt>).
 
 ```bash
-cd /Users/ario/Downloads/syntha/mcp
+cd /path/to/your/syntha/checkout/mcp
 
 # Validate the manifest against the schema:
 npx @anthropic-ai/dxt validate manifest.json
@@ -103,7 +103,7 @@ Anthropic's reviewer will install your DXT and try the sample prompts. You shoul
 Public, immutable URL is required by some marketplace forms.
 
 ```bash
-cd /Users/ario/Downloads/syntha
+cd /path/to/your/syntha/checkout
 gh release upload v0.5.10 mcp/syntha-0.5.10.dxt --clobber
 # Then verify:
 gh release view v0.5.10 --json assets -q '.assets[] | .name'
@@ -136,18 +136,18 @@ When you reach the submission form, the fields it will ask for are pre-written i
 | Tools list (one row per tool) | "Tool list" table |
 | Sample prompts (≥ 3) | "Sample prompts" |
 | Screenshots (≥ 1) | Upload the three PNGs under `docs/figures/` |
-| Author name | Ariorad Moniri |
-| Author affiliation | Acibadem University School of Medicine, Istanbul, Turkey |
-| Author email | (your preferred public contact — defaults to `moniriario@gmail.com`) |
-| Author ORCID | 0000-0002-5171-3532 |
-| Homepage URL | https://github.com/ArioMoniri/syntha |
-| Documentation URL | https://github.com/ArioMoniri/syntha/blob/main/docs/MCP.md |
-| Source repository | https://github.com/ArioMoniri/syntha |
+| Author name | Yara Ismail (fork maintainer) — based on syntha by Ariorad Moniri |
+| Author affiliation | none declared (see Appendix C) |
+| Author email | (your preferred public contact — defaults to `yaraismail2611@gmail.com`) |
+| Author ORCID | n/a for this fork; original author's ORCID is 0000-0002-5171-3532 |
+| Homepage URL | https://github.com/Mmynemious/syntha |
+| Documentation URL | https://github.com/Mmynemious/syntha/blob/main/docs/MCP.md |
+| Source repository | https://github.com/Mmynemious/syntha |
 | License | Apache-2.0 |
-| Privacy policy URL | https://github.com/ArioMoniri/syntha/blob/main/PRIVACY.md |
-| Terms of use URL | https://github.com/ArioMoniri/syntha/blob/main/TERMS.md |
-| Security policy URL | https://github.com/ArioMoniri/syntha/blob/main/SECURITY.md |
-| Support URL | https://github.com/ArioMoniri/syntha/issues |
+| Privacy policy URL | https://github.com/Mmynemious/syntha/blob/main/PRIVACY.md |
+| Terms of use URL | https://github.com/Mmynemious/syntha/blob/main/TERMS.md |
+| Security policy URL | https://github.com/Mmynemious/syntha/blob/main/SECURITY.md |
+| Support URL | https://github.com/Mmynemious/syntha/issues |
 | Pricing | Free (Apache-2.0 OSS) |
 | DXT asset | Upload `syntha-0.5.10.dxt` *or* paste the GitHub release URL |
 | Compatibility | macOS · Windows · Linux · Python ≥ 3.10 |
@@ -195,7 +195,7 @@ Once live:
 4. Uploads the file as a GitHub Release asset alongside the existing `.dmg` / `.exe` / `.AppImage` / `latest.json`.
 
 So after the next tag, you can pull the DXT directly from
-`https://github.com/ArioMoniri/syntha/releases/latest/download/syntha.dxt`
+`https://github.com/Mmynemious/syntha/releases/latest/download/syntha.dxt`
 without rebuilding locally.
 
 ## Appendix B — Alternative path: Streamable HTTP custom connector
@@ -211,15 +211,15 @@ syntha-mcp --transport http --host 0.0.0.0 --port 8765
 
 Then users add the URL to *claude.com → Settings → Connectors → Add custom connector*. This path **does not require Anthropic's review** — anyone with the URL can self-add it. The directory submission and the custom-connector URL are independent; you can do either, both, or neither.
 
-## Appendix C — What you legally need from your institution
+## Appendix C — Crediting the original author
 
-If you list the connector under "Acibadem University School of Medicine":
-
-- Confirm with your department head that you have permission to publish under the institution's name.
-- The institutional letterhead is not required by Anthropic, but **is** required by KVKK / institutional policy in Türkiye if the listing implies institutional endorsement.
-- If unsure, list yourself personally as the author and put the affiliation in a sub-line: "Ariorad Moniri (Acibadem University School of Medicine — affiliation, not endorsement)".
-
-This is a *you decide* item — neither the connector nor this guide imposes it.
+This fork lists Yara Ismail as the maintainer submitting and supporting the
+connector, with a "based on syntha by Ariorad Moniri" credit line in the
+manifest and listing copy (original author, Acibadem University School of
+Medicine, Istanbul, Turkey — ORCID 0000-0002-5171-3532). If you're listing
+under an institution's name instead of personally, confirm with that
+institution first that you have permission to publish on their behalf —
+neither the connector nor this guide imposes that on you.
 
 ## Appendix D — Roll-back
 

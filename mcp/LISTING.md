@@ -29,7 +29,7 @@ syntha generates fully synthetic patient cohorts for ML training, healthy-contro
 
 A mixed-type Gaussian copula (polyserial + tetrachoric correlations) is paired with nine Synthea-style clinical modules and a Turkish-locale layer that emits LOINC + SNOMED CT + ICD-10 + RxNorm coded resources with bilingual EN/TR display strings.
 
-Eight tools cover generation (CSV, FHIR R4 NDJSON), AST-validated conditional rejection sampling, and inspection of the bundled cohorts (tolerant n=135,569; strict n=55,141). Every release runs the Stadler 2022 NN-MIA privacy audit in CI.
+34 tools cover generation (CSV, FHIR R4 NDJSON), AST-validated conditional rejection sampling, validation/privacy audits, and inspection of the bundled cohorts (tolerant n=135,569; strict n=55,141). Every release runs the Stadler 2022 NN-MIA privacy audit in CI.
 
 Apache 2.0. No PHI ever returned. No telemetry. No filesystem side-effects.
 ```
@@ -85,24 +85,24 @@ Upload these directly via the submission form's image upload field.
 
 | Field | URL |
 |---|---|
-| Homepage | https://github.com/ArioMoniri/syntha |
-| Documentation | https://github.com/ArioMoniri/syntha/blob/main/docs/MCP.md |
-| Source repository | https://github.com/ArioMoniri/syntha |
+| Homepage | https://github.com/Mmynemious/syntha |
+| Documentation | https://github.com/Mmynemious/syntha/blob/main/docs/MCP.md |
+| Source repository | https://github.com/Mmynemious/syntha |
 | License | https://www.apache.org/licenses/LICENSE-2.0 |
-| Privacy policy | https://github.com/ArioMoniri/syntha/blob/main/PRIVACY.md |
-| Terms of use | https://github.com/ArioMoniri/syntha/blob/main/TERMS.md |
-| Security policy | https://github.com/ArioMoniri/syntha/blob/main/SECURITY.md |
-| Support | https://github.com/ArioMoniri/syntha/issues |
+| Privacy policy | https://github.com/Mmynemious/syntha/blob/main/PRIVACY.md |
+| Terms of use | https://github.com/Mmynemious/syntha/blob/main/TERMS.md |
+| Security policy | https://github.com/Mmynemious/syntha/blob/main/SECURITY.md |
+| Support | https://github.com/Mmynemious/syntha/issues |
 
 ## Author block
 
 ```
-Ariorad Moniri
-Acibadem University School of Medicine, Istanbul, Turkey
-ORCID: 0000-0002-5171-3532
+Yara Ismail (fork maintainer)
+GitHub: @Mmynemious
 ```
 
-Co-author (paper): Umut Kilinckaya — ORCID 0009-0008-4576-8589.
+Based on syntha by Ariorad Moniri, Acibadem University School of Medicine, Istanbul, Turkey
+(ORCID: 0000-0002-5171-3532). Co-author (paper): Umut Kilinckaya — ORCID 0009-0008-4576-8589.
 
 ## License
 
