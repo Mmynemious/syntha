@@ -1,0 +1,1 @@
+syntha-ehr[mcp] @ git+https://github.com/Mmynemious/syntha.git@claude/forked-project-overview-zezjck
