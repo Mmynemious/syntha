@@ -3,9 +3,9 @@ import { ChevronUp, X } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Generators", href: "/generate.html" },
-  { label: "Validation", href: "https://github.com/Mmynemious/syntha" },
-  { label: "MCP", href: "https://github.com/Mmynemious/syntha/blob/main/docs/MCP.md" },
-  { label: "Docs", href: "https://github.com/Mmynemious/syntha#readme" },
+  { label: "Validation", href: "#validation" },
+  { label: "MCP", href: "#mcp" },
+  { label: "Docs", href: "#docs" },
   { label: "Get Started", href: "/generate.html" },
 ];
 

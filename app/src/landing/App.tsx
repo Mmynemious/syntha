@@ -5,6 +5,7 @@ import { TrustedBy } from "./TrustedBy";
 import { Generators } from "./Generators";
 import { Validation } from "./Validation";
 import { MCPSection } from "./MCPSection";
+import { Docs } from "./Docs";
 import { Footer } from "./Footer";
 
 export function App() {
@@ -16,6 +17,7 @@ export function App() {
       <Generators />
       <Validation />
       <MCPSection />
+      <Docs />
       <Footer />
     </>
   );
