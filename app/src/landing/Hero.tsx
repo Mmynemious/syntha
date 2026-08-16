@@ -68,9 +68,7 @@ export function Hero() {
       <div className="hero-content">
         <Ticker />
 
-        <h1 className="hero-title">
-          Synthetic patient cohorts, <span className="brand-italic">syntha</span>-made, on demand.
-        </h1>
+        <h1 className="hero-title">Finally, the patient data your project needed.</h1>
 
         <p className="hero-subtitle">
           A synthetic-data engine for researchers and builders who need realistic patient cohorts

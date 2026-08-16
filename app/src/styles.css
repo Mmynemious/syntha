@@ -1,15 +1,15 @@
 :root {
-  --fg: #fafafa;
-  --muted: #9e9e9e;
-  --bg: #0c0c0c;
-  --card: #111111;
-  --card-alt: #0d0d0d;
-  --primary: #ffd400;
-  --primary-hover: #ffe776;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  --tr-red: #ff6b6b;
-  --grad: linear-gradient(90deg, #ffe776 0%, #ffd400 22%, #ffd000 40%, #c9c93c 60%, #86ca8a 76%, #78d0cd 100%);
+  --fg: #0a0a0a;
+  --muted: #6b6b6b;
+  --bg: #ffffff;
+  --card: #fbfbfb;
+  --card-alt: #f7f7f7;
+  --primary: #0a0a0a;
+  --primary-hover: #1a1a1a;
+  --primary-text: #ffffff;
+  --border: rgba(10, 10, 10, 0.08);
+  --border-strong: rgba(10, 10, 10, 0.16);
+  --tr-red: #d9363e;
 }
 
 * { box-sizing: border-box; }
@@ -20,6 +20,7 @@ html, body {
   color: var(--fg);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
+  letter-spacing: -0.01em;
 }
 
 /* ── Top nav (shared brand strip, matches landing page) ──────────── */
@@ -33,17 +34,18 @@ html, body {
 .topnav-brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   color: var(--fg);
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
   font-weight: 600;
-  font-size: 17px;
-  letter-spacing: -0.01em;
+  font-size: 20px;
+  letter-spacing: -0.06em;
 }
-.topnav-logo { width: 26px; height: 26px; }
 .topnav-back {
   color: var(--muted);
   font-size: 13px;
   font-weight: 500;
+  letter-spacing: -0.01em;
   transition: color 0.15s ease;
 }
 .topnav-back:hover { color: var(--fg); }
@@ -54,8 +56,8 @@ header {
 
 header h1 {
   font-size: 28px;
-  font-weight: 500;
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  letter-spacing: -0.03em;
   margin: 0 0 4px;
   color: var(--fg);
 }
@@ -191,23 +193,23 @@ button {
   transition: background 120ms, border-color 120ms;
 }
 
-button:hover { background: #1a1a1a; border-color: var(--border-strong); }
+button:hover { background: #eeeeee; border-color: var(--border-strong); }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 button.primary {
-  background: var(--grad);
+  background: var(--primary);
   border: none;
-  color: #0c0c0c;
+  color: var(--primary-text);
   font-weight: 600;
 }
-button.primary:hover { filter: brightness(1.06); }
+button.primary:hover { background: var(--primary-hover); }
 
 .status {
   margin: 10px 0 0;
 }
 
-.status.success { color: #4ade80; }
-.status.error   { color: #ff6b6b; }
+.status.success { color: #16a34a; }
+.status.error   { color: #d9363e; }
 
 .preview {
   overflow: auto;
@@ -233,7 +235,7 @@ button.primary:hover { filter: brightness(1.06); }
   z-index: 1;
   box-shadow: 0 1px 0 var(--border);
 }
-.preview tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
+.preview tbody tr:nth-child(even) td { background: rgba(10, 10, 10, 0.02); }
 
 footer {
   padding: 16px 32px 32px;
@@ -314,7 +316,7 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
   text-decoration: none;
   line-height: 1.3;
 }
-.collab-title:hover { text-decoration: underline; color: var(--primary); }
+.collab-title:hover { text-decoration: underline; }
 .collab-body {
   margin: 0;
   font-size: 12.5px;
