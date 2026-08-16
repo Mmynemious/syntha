@@ -113,6 +113,39 @@
         <div id="preview" class="preview"></div>
       </section>
 
+      <section class="card">
+        <h2>🇺🇸 Real Synthea (official, US)</h2>
+        <p class="hint">
+          Runs the actual <a href="https://github.com/synthetichealth/synthea" target="_blank" rel="noopener">MITRE Synthea</a>
+          Java toolchain server-side — rule-based state-machine simulation, no real patient data involved,
+          alongside syntha's Turkish copula-based generator above. Downloads a CSV export.
+        </p>
+        <div class="grid">
+          <div>
+            <label>
+              <span>State</span>
+              <select id="synthea-state"></select>
+            </label>
+          </div>
+          <div>
+            <label>
+              <span>Population</span>
+              <input id="synthea-population" type="number" min="1" max="500" value="25" />
+            </label>
+          </div>
+          <div>
+            <label>
+              <span>Seed (optional)</span>
+              <input id="synthea-seed" type="number" placeholder="random" />
+            </label>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="synthea-generate" class="primary">Generate & download CSV</button>
+        </div>
+        <p id="synthea-status" class="status muted"></p>
+      </section>
+
       <section class="card collab-card-section">
         <h2 data-i18n-key="section_collaborate">Collaborate</h2>
         <p class="hint" data-i18n-key="collab_intro">

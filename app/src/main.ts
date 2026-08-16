@@ -21,6 +21,7 @@ import {
 } from "./collaborate";
 import { initI18n, t } from "./i18n";
 import { checkOnDemand, checkOnStartup } from "./updater";
+import { initSynthea } from "./synthea";
 
 // Lazy-load the bundled model for the chosen cohort.
 async function loadModel(cohort: "tolerant" | "strict"): Promise<CopulaModel> {
@@ -234,6 +235,7 @@ refreshLongitudinalParamsVisibility();
 // 'tr', else en). Saved preference in localStorage["syntha.locale"]
 // overrides detection.
 initI18n();
+initSynthea();
 
 setStatus(t("status_idle"));
 
