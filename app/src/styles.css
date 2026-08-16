@@ -94,6 +94,10 @@ main {
   gap: 16px 24px;
 }
 
+.grid[hidden] {
+  display: none;
+}
+
 label {
   display: block;
   font-weight: 500;

@@ -7,7 +7,7 @@
 
 import { t } from "./i18n";
 
-const REPO_OWNER = "ArioMoniri";
+const REPO_OWNER = "Mmynemious";
 const REPO_NAME = "syntha";
 
 const HANDLE_STORAGE_KEY = "syntha.collab.handle";
