@@ -36,13 +36,8 @@ export function MCPSection() {
           ))}
         </ul>
 
-        <a
-          className="section-link"
-          href="https://github.com/Mmynemious/syntha/blob/main/docs/MCP.md"
-          target="_blank"
-          rel="noopener"
-        >
-          Read the MCP docs →
+        <a className="section-link" href="/mcp.html">
+          Set up the connector →
         </a>
       </div>
     </section>

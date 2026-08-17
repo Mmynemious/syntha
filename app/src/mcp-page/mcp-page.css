@@ -1,0 +1,191 @@
+/* Relies on shared tokens from ../chrome.css and ../styles.css. */
+
+body.mcp-page main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mcp-hero {
+  padding: 96px 32px 8px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mcp-kicker {
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--card-alt);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.mcp-hero h1 {
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+  color: var(--fg);
+}
+
+.mcp-hero p {
+  margin: 0;
+  max-width: 640px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.mcp-install-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 28px 0 0;
+}
+
+.mcp-install-tab {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--card-alt);
+  color: var(--fg);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mcp-install-tab.is-active {
+  background: var(--primary);
+  color: var(--primary-text);
+  border-color: var(--primary);
+}
+
+.mcp-code-card {
+  background: #0a0a0a;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-top: 16px;
+  overflow-x: auto;
+}
+
+.mcp-code-card pre {
+  margin: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #d8f5d0;
+  white-space: pre;
+}
+
+.mcp-code-card .code-comment {
+  color: #6b6b6b;
+}
+
+.mcp-step-list {
+  counter-reset: mcp-step;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mcp-step-list li {
+  counter-increment: mcp-step;
+  position: relative;
+  padding-left: 34px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--fg);
+}
+
+.mcp-step-list li::before {
+  content: counter(mcp-step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mcp-step-list code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12.5px;
+  background: var(--card-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.mcp-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.mcp-tool-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  background: var(--card);
+}
+
+.mcp-tool-card h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.mcp-tool-card .mcp-tool-count {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.mcp-tool-card p {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.mcp-tool-card .mcp-tool-example {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11.5px;
+  color: var(--fg);
+}
+
+.mcp-footer-links {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mcp-footer-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 2px;
+}
+
+@media (max-width: 620px) {
+  .mcp-tool-grid {
+    grid-template-columns: 1fr;
+  }
+}

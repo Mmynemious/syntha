@@ -5,7 +5,7 @@ import "../chrome.css";
 const NAV_LINKS = [
   { label: "Generators", href: "/generate.html" },
   { label: "Benchmark", href: "/benchmark.html" },
-  { label: "MCP", href: "/#mcp" },
+  { label: "MCP", href: "/mcp.html" },
   { label: "Docs", href: "/#docs" },
   { label: "GitHub", href: "https://github.com/Mmynemious/syntha" },
 ];

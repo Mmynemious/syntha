@@ -15,6 +15,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         generate: resolve(__dirname, "generate.html"),
         benchmark: resolve(__dirname, "benchmark.html"),
+        mcp: resolve(__dirname, "mcp.html"),
       },
     },
   },
