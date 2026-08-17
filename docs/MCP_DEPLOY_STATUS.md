@@ -63,17 +63,31 @@ real synthetic CSV data.
     `https://syntha-six.vercel.app/api/mcp` → JSON-RPC `initialize`
     round-trips and lists all bundled tools.
 
+## Also done
+
+- **`dba4047`** — rebranded `mcp/manifest.json`, `mcp/LISTING.md`,
+  `mcp/SUBMISSION.md`: author is now the fork maintainer (Yara Ismail),
+  with a "Based on syntha by Ariorad Moniri" credit line, and every URL
+  repointed to `github.com/Mmynemious/syntha`. `src/syntha/mcp_server.py`
+  and `src/syntha/fhir/export.py` had their hard-coded repo URLs fixed
+  too (`e9da183`, `cc125eb`).
+- **`4e7e361`, `1aa59fd`, `c6f85e6`, `cf11b33`** — landing page rebuilt
+  as a Vite + React app (was vanilla HTML), plus a new
+  `app/benchmark.html` dashboard page and a Docs & resources section.
+  Re-verified 2026-08-17: `/`, `/generate.html`, `/benchmark.html`, and
+  `/api/mcp` all live and responding correctly on
+  `https://syntha-six.vercel.app`. Full `pytest -q` suite still green
+  (fresh venv, `pip install -e ".[dev,mcp]"`).
+
 ## Not done yet
 
-1. **MCP listing files not rebranded.** `mcp/manifest.json`,
-   `mcp/LISTING.md`, `mcp/SUBMISSION.md` still hard-code the original
-   upstream author's identity (name, email, ORCID, institution) and all
-   `github.com/ArioMoniri/syntha` URLs. Decision already made: list the
-   fork owner as maintainer with a "based on syntha by Ariorad Moniri"
-   credit line, and repoint URLs to `github.com/Mmynemious/syntha`. Not
-   started.
-2. **Claude.com connector not added yet.** The endpoint is live and
-   verified via raw JSON-RPC — next step is adding
+1. **Claude.com connector not added yet.** The endpoint is live and
+   responding correctly (confirmed both via a raw JSON-RPC `initialize`
+   round-trip in an earlier session, and independently re-verified here
+   via a GET request returning the expected
+   `Client must accept text/event-stream` protocol error rather than a
+   404/500). Next step is adding
    `https://syntha-six.vercel.app/api/mcp` as a custom connector in
    Claude.com and confirming a real tool call round-trips through the
-   actual client.
+   actual client — this needs the account owner to do the "Add
+   connector" step themselves.
