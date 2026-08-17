@@ -9,15 +9,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/chrome.css" />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
-    <nav class="topnav">
-      <a class="topnav-brand" href="/">
-        <span>syntha</span>
-      </a>
-      <a class="topnav-back" href="/">← Home</a>
-    </nav>
+    <div class="nav">
+      <div class="nav-inner">
+        <a class="logo" href="/" aria-label="syntha home">syntha</a>
+        <button
+          type="button"
+          id="menu-toggle"
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="site-drawer"
+        >
+          <span id="menu-toggle-label">Menu</span>
+          <svg id="menu-toggle-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="site-drawer" class="drawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+      <ul class="drawer-links">
+        <li><a href="/generate.html">Generators</a></li>
+        <li><a href="/benchmark.html">Benchmark</a></li>
+        <li><a href="/#mcp">MCP</a></li>
+        <li><a href="/#docs">Docs</a></li>
+        <li><a href="https://github.com/Mmynemious/syntha" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+      <p class="drawer-footer">© 2026 syntha · Apache 2.0</p>
+    </div>
 
     <header>
       <h1>Synthetic patient generator</h1>
@@ -201,21 +222,61 @@
       </div>
     </div>
 
-    <footer>
-      <p>
-        <span data-i18n-key="footer_license">Apache 2.0 · trained on open clinical standards (LOINC / SNOMED CT / ICD-10 / RxNorm) ·</span>
-        <a href="https://github.com/Mmynemious/syntha" target="_blank" rel="noopener" data-i18n-key="footer_github">GitHub</a> ·
-        <a href="#" id="check-updates" data-i18n-key="footer_check_updates">Check for updates</a>
-        <span class="locale-control">
-          <span data-i18n-key="footer_lang_label">Language</span>:
-          <select id="locale-switcher" aria-label="Language">
-            <option value="en">English</option>
-            <option value="tr">Türkçe</option>
-          </select>
-        </span>
-      </p>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="logo footer-logo">syntha</span>
+        <p class="footer-note">
+          <span data-i18n-key="footer_license">Apache 2.0 · trained on open clinical standards (LOINC / SNOMED CT / ICD-10 / RxNorm)</span>
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/Mmynemious/syntha" target="_blank" rel="noopener" data-i18n-key="footer_github">GitHub</a>
+          <a href="/benchmark.html">Benchmark</a>
+          <a href="#" id="check-updates" data-i18n-key="footer_check_updates">Check for updates</a>
+          <span class="locale-control">
+            <span data-i18n-key="footer_lang_label">Language</span>:
+            <select id="locale-switcher" aria-label="Language">
+              <option value="en">English</option>
+              <option value="tr">Türkçe</option>
+            </select>
+          </span>
+        </div>
+      </div>
     </footer>
 
+    <script>
+      (function () {
+        var toggle = document.getElementById("menu-toggle");
+        var label = document.getElementById("menu-toggle-label");
+        var icon = document.getElementById("menu-toggle-icon");
+        var drawer = document.getElementById("site-drawer");
+        var open = false;
+
+        function setOpen(next) {
+          open = next;
+          toggle.classList.toggle("is-open", open);
+          toggle.setAttribute("aria-expanded", String(open));
+          drawer.classList.toggle("is-open", open);
+          drawer.setAttribute("aria-hidden", String(!open));
+          label.textContent = open ? "Close" : "Menu";
+          icon.innerHTML = open
+            ? '<path d="M18 6L6 18M6 6l12 12"/>'
+            : '<path d="M18 15l-6-6-6 6"/>';
+          document.body.classList.toggle("drawer-open", open);
+        }
+
+        toggle.addEventListener("click", function () {
+          setOpen(!open);
+        });
+        drawer.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            setOpen(false);
+          });
+        });
+        window.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -1,7 +1,9 @@
+import "../chrome.css";
+
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="section-inner footer-inner">
+      <div className="footer-inner">
         <span className="logo footer-logo">syntha</span>
         <p className="footer-note">
           Apache 2.0 · trained on open clinical standards (LOINC / SNOMED CT / ICD-10 / RxNorm)
@@ -18,6 +20,7 @@ export function Footer() {
             Docs
           </a>
           <a href="/generate.html">Generators</a>
+          <a href="/benchmark.html">Benchmark</a>
         </div>
       </div>
     </footer>

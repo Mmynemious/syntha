@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { ChevronUp, X } from "lucide-react";
+import "../chrome.css";
 
 const NAV_LINKS = [
   { label: "Generators", href: "/generate.html" },
-  { label: "Validation", href: "#validation" },
-  { label: "MCP", href: "#mcp" },
-  { label: "Docs", href: "#docs" },
-  { label: "Get Started", href: "/generate.html" },
+  { label: "Benchmark", href: "/benchmark.html" },
+  { label: "MCP", href: "/#mcp" },
+  { label: "Docs", href: "/#docs" },
+  { label: "GitHub", href: "https://github.com/Mmynemious/syntha" },
 ];
 
 export function Navbar() {

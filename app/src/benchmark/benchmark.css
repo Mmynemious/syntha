@@ -3,10 +3,13 @@
 
 body.bench-page main {
   max-width: 900px;
+  margin: 0 auto;
 }
 
 .bench-header {
-  padding: 28px 32px 8px;
+  padding: 96px 32px 8px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .bench-header h1 {
@@ -229,7 +232,7 @@ body.bench-page main {
   font-size: 12.5px;
 }
 
-.bench-footer {
+.bench-source-note {
   padding: 16px 32px 32px;
   color: var(--muted);
   font-size: 12px;
@@ -238,7 +241,7 @@ body.bench-page main {
   margin: 0 auto;
 }
 
-.bench-footer code {
+.bench-source-note code {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
 }
 

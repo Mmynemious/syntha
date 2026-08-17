@@ -23,35 +23,8 @@ html, body {
   letter-spacing: -0.01em;
 }
 
-/* ── Top nav (shared brand strip, matches landing page) ──────────── */
-.topnav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 32px;
-  border-bottom: 1px solid var(--border);
-}
-.topnav-brand {
-  display: inline-flex;
-  align-items: center;
-  color: var(--fg);
-  font-family: "Source Serif 4", serif;
-  font-style: italic;
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.06em;
-}
-.topnav-back {
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  transition: color 0.15s ease;
-}
-.topnav-back:hover { color: var(--fg); }
-
 header {
-  padding: 28px 32px 8px;
+  padding: 96px 32px 8px;
 }
 
 header h1 {

@@ -1,5 +1,7 @@
 import "./benchmark.css";
 import { dashboard } from "./data";
+import { Navbar } from "../landing/Navbar";
+import { Footer } from "../landing/Footer";
 
 const KS_THRESHOLD = 0.05;
 const KS_SCALE_MAX = 0.25;
@@ -129,14 +131,7 @@ function ReleaseTable() {
 export function App() {
   return (
     <>
-      <nav className="topnav">
-        <a className="topnav-brand" href="/">
-          <span>syntha</span>
-        </a>
-        <a className="topnav-back" href="/">
-          ← Home
-        </a>
-      </nav>
+      <Navbar />
 
       <header className="bench-header">
         <h1>Benchmark dashboard</h1>
@@ -179,12 +174,12 @@ export function App() {
         <ReleaseTable />
       </main>
 
-      <footer className="bench-footer">
-        <p>
-          Built from <code>benchmarks/dashboard.json</code>, committed in this repo and
-          regenerated per release. Apache 2.0.
-        </p>
-      </footer>
+      <p className="bench-source-note">
+        Built from <code>benchmarks/dashboard.json</code>, committed in this repo and
+        regenerated per release.
+      </p>
+
+      <Footer />
     </>
   );
 }

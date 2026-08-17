@@ -1,0 +1,187 @@
+/* Shared site chrome — nav (+ drawer) and footer — used identically by the
+   landing page (React), the benchmark dashboard (React), and generate.html
+   (plain HTML + a small inline script). One visual language across every
+   page instead of three different nav bars. */
+
+body.drawer-open {
+  overflow: hidden;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 19px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -0.08em;
+  color: var(--text, #0a0a0a);
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--button-bg, #0a0a0a);
+  color: var(--button-text, #fff);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.menu-toggle svg {
+  display: block;
+}
+
+.menu-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle.is-open svg {
+  transform: rotate(180deg);
+}
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: var(--bg, #fff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+}
+
+.drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.drawer-links a {
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: var(--text, #0a0a0a);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.drawer-links a:hover {
+  color: var(--muted, #6b6b6b);
+}
+
+.drawer-footer {
+  position: absolute;
+  bottom: 36px;
+  font-size: 13px;
+  color: var(--muted, #6b6b6b);
+  letter-spacing: -0.01em;
+}
+
+/* Pages that aren't the hero landing page still need top clearance under
+   the fixed nav — the landing page's own hero padding already covers it. */
+.page-with-fixed-nav > *:not(.nav):first-of-type {
+  padding-top: 76px;
+}
+
+/* ============ FOOTER ============ */
+.site-footer {
+  padding: 44px 36px 56px;
+  border-top: 1px solid var(--border-soft, rgba(0, 0, 0, 0.08));
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+
+.footer-logo {
+  font-size: 20px;
+}
+
+.footer-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted, #6b6b6b);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--muted, #6b6b6b);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-links a:hover {
+  color: var(--text, #0a0a0a);
+}
+
+@media (max-width: 1200px) {
+  .nav-inner {
+    padding: 19px 32px;
+  }
+  .drawer-links a {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 810px) {
+  .nav-inner {
+    padding: 20px;
+  }
+  .drawer-links a {
+    font-size: 32px;
+  }
+  .site-footer {
+    padding: 32px 24px 40px;
+  }
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
