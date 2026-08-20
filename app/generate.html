@@ -138,6 +138,17 @@
         <p id="status" class="status muted"></p>
       </section>
 
+      <section class="card" id="calibration-card" hidden>
+        <h2>How does this batch compare to Türkiye?</h2>
+        <p class="hint">
+          Disease prevalence in the patients you just generated, against published national
+          figures — with a 95% confidence interval sized to your batch, so you can tell a real
+          gap from small-sample noise. The source cohort is deliberately &quot;pristine&quot;
+          (healthier than the general population), so some gap here is expected, not a bug.
+        </p>
+        <div id="calibration-table"></div>
+      </section>
+
       <section class="card" id="preview-card" hidden>
         <h2 data-i18n-key="section_preview">Preview</h2>
         <p class="hint" data-i18n-key="preview_hint">

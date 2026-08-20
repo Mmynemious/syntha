@@ -22,6 +22,7 @@ import {
 import { initI18n, t } from "./i18n";
 import { checkOnDemand, checkOnStartup } from "./updater";
 import { initSynthea } from "./synthea";
+import { NATIONAL_REFERENCES, wilsonInterval } from "./national-reference";
 
 // Lazy-load the bundled model for the chosen cohort.
 async function loadModel(cohort: "tolerant" | "strict"): Promise<CopulaModel> {
@@ -181,6 +182,79 @@ function escapeHtml(s: string): string {
   ));
 }
 
+function pct(x: number): string {
+  return (x * 100).toFixed(1) + "%";
+}
+
+function renderCalibration(result: SampleResult) {
+  const card = el<HTMLElement>("calibration-card");
+  const container = el<HTMLDivElement>("calibration-table");
+  const rows: string[] = [];
+
+  for (const ref of NATIONAL_REFERENCES) {
+    const idx = result.columns.indexOf(ref.column);
+    if (idx === -1) continue; // not present for this cohort, or dropped
+
+    let successes = 0;
+    let n = 0;
+    for (const row of result.rows) {
+      const v = row[idx];
+      if (v === null || v === undefined) continue;
+      n++;
+      if (Number(v) === 1) successes++;
+    }
+    if (n === 0) continue;
+
+    const phat = successes / n;
+    const ci = wilsonInterval(successes, n);
+    const coversNational = ref.rate >= ci.lo && ref.rate <= ci.hi;
+    const badgeClass = coversNational ? "calibration-badge--ok" : "calibration-badge--gap";
+    const badgeText = coversNational ? "within expected range" : "differs from national figure";
+
+    // Scale each row's bars to its own range so small prevalences (a few %)
+    // aren't reduced to an unreadable sliver.
+    const scaleMax = Math.max(ci.hi, ref.rate) * 1.3;
+    const widthPct = (v: number) => `${Math.max(0, (v / scaleMax) * 100).toFixed(2)}%`;
+
+    rows.push(`
+      <div class="calibration-row">
+        <div class="calibration-row__head">
+          <strong>${escapeHtml(ref.label)}</strong>
+          <span class="calibration-badge ${badgeClass}">${badgeText}</span>
+        </div>
+        <div class="calibration-bars">
+          <div class="calibration-bar-row">
+            <span class="calibration-bar-tag">Your batch</span>
+            <div class="calibration-track">
+              <div class="calibration-fill calibration-fill--batch" style="width:${widthPct(phat)}"></div>
+              <div class="calibration-ci" style="left:${widthPct(ci.lo)};width:${widthPct(ci.hi - ci.lo)}"></div>
+            </div>
+            <span class="calibration-bar-val">${pct(phat)} (n=${n})</span>
+          </div>
+          <div class="calibration-bar-row">
+            <span class="calibration-bar-tag">Türkiye</span>
+            <div class="calibration-track">
+              <div class="calibration-fill calibration-fill--national" style="width:${widthPct(ref.rate)}"></div>
+            </div>
+            <span class="calibration-bar-val">${pct(ref.rate)}</span>
+          </div>
+        </div>
+        <p class="calibration-note">
+          Source: <a href="${escapeHtml(ref.sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(ref.source)} (${ref.year})</a>.
+          ${ref.note ? escapeHtml(ref.note) : ""}
+        </p>
+      </div>
+    `);
+  }
+
+  if (rows.length === 0) {
+    container.innerHTML = `<p class="hint">None of the modeled comorbidities in this batch have a matched national reference yet.</p>`;
+  } else {
+    container.innerHTML = rows.join("");
+  }
+  card.hidden = false;
+}
+
 function renderPreview(result: SampleResult) {
   const card = el<HTMLElement>("preview-card");
   const container = el<HTMLDivElement>("preview");
@@ -201,6 +275,7 @@ el<HTMLButtonElement>("generate").addEventListener("click", async () => {
     const result = await generate();
     if (result && result.rows.length > 0) {
       downloadCsv(result, readParams().cohort);
+      renderCalibration(result);
     }
   } finally {
     el<HTMLButtonElement>("generate").disabled = false;
@@ -213,7 +288,10 @@ el<HTMLButtonElement>("preview-btn").addEventListener("click", async () => {
   el<HTMLButtonElement>("preview-btn").disabled = true;
   try {
     const result = await generate();
-    if (result && result.rows.length > 0) renderPreview(result);
+    if (result && result.rows.length > 0) {
+      renderPreview(result);
+      renderCalibration(result);
+    }
   } finally {
     el<HTMLButtonElement>("generate").disabled = false;
     el<HTMLButtonElement>("preview-btn").disabled = false;
